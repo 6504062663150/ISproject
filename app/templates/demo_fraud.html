@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .prediction {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .home-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2ecc71;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .home-btn:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fraud Detection Demo</h1>
+    <form action="/demo_fraud" method="post">
+        <!-- User ID -->
+        <label for="User_ID">User ID:</label>
+        <input type="number" id="User_ID" name="User_ID" placeholder="e.g., 4174" value="4174" required><br><br>
+        
+        <!-- Transaction Amount -->
+        <label for="Transaction_Amount">Transaction Amount:</label>
+        <input type="number" id="Transaction_Amount" name="Transaction_Amount" placeholder="e.g., 1292.76" value="1292.76" step="0.01" required><br><br>
+        
+        <!-- Transaction Type -->
+        <label for="Transaction_Type">Transaction Type:</label>
+        <select id="Transaction_Type" name="Transaction_Type" required>
+            <option value="ATM Withdrawal">ATM Withdrawal</option>
+            <option value="Bill Payment">Bill Payment</option>
+            <option value="Online Purchase">Online Purchase</option>
+            <option value="In-Store Purchase">In-Store Purchase</option>
+        </select><br><br>
+        
+        <!-- Time of Transaction -->
+        <label for="Time_of_Transaction">Time of Transaction (in hours):</label>
+        <input type="number" id="Time_of_Transaction" name="Time_of_Transaction" placeholder="e.g., 16.0" value="16.0" step="0.1" required><br><br>
+        
+        <!-- Device Used -->
+        <label for="Device_Used">Device Used:</label>
+        <select id="Device_Used" name="Device_Used" required>
+            <option value="Tablet">Tablet</option>
+            <option value="Mobile">Mobile</option>
+            <option value="Desktop">Desktop</option>
+        </select><br><br>
+        
+        <!-- Location -->
+        <label for="Location">Location:</label>
+        <select id="Location" name="Location" required>
+            <option value="San Francisco">San Francisco</option>
+            <option value="New York">New York</option>
+            <option value="Chicago">Chicago</option>
+            <option value="Los Angeles">Los Angeles</option>
+            <option value="Miami">Miami</option>
+        </select><br><br>
+        
+        <!-- Previous Fraudulent Transactions -->
+        <label for="Previous_Fraudulent_Transactions">Previous Fraudulent Transactions:</label>
+        <input type="number" id="Previous_Fraudulent_Transactions" name="Previous_Fraudulent_Transactions" placeholder="e.g., 0" value="0" required><br><br>
+        
+        <!-- Account Age -->
+        <label for="Account_Age">Account Age (in days):</label>
+        <input type="number" id="Account_Age" name="Account_Age" placeholder="e.g., 119" value="119" required><br><br>
+        
+        <!-- Number of Transactions Last 24H -->
+        <label for="Number_of_Transactions_Last_24H">Number of Transactions Last 24H:</label>
+        <input type="number" id="Number_of_Transactions_Last_24H" name="Number_of_Transactions_Last_24H" placeholder="e.g., 13" value="13" required><br><br>
+        
+        <!-- Payment Method -->
+        <label for="Payment_Method">Payment Method:</label>
+        <select id="Payment_Method" name="Payment_Method" required>
+            <option value="Debit Card">Debit Card</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="UPI">UPI</option>
+            <option value="PayPal">PayPal</option>
+        </select><br><br>
+        
+        <!-- Submit Button -->
+        <button type="submit">Predict</button>
+    </form>
+
+    <!-- Prediction Result -->
+    {% if prediction_text %}
+    <div class="prediction">
+        <h2>Prediction: {{ prediction_text }}</h2>
+    </div>
+    {% endif %}
+
+    <!-- Home Button -->
+    <a href="/" class="home-btn">Home</a>
+</body>
+</html>

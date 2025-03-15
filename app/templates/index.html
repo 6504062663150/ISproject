@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Fraud Detection & Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #3498db;
+        }
+        .steps ol {
+            line-height: 1.6;
+        }
+        .steps li {
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .btn-heart {
+            background-color: #2ecc71;
+        }
+        .btn-heart:hover {
+            background-color: #27ae60;
+        }
+        .btn-fraud {
+            background-color: #e74c3c;
+        }
+        .btn-fraud:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Fraud Detection & Heart Disease Prediction Web App</h1>
+
+    <!-- Heart Disease Section -->
+    <div class="section">
+        <h2>Heart Disease Prediction</h2>
+        <div class="steps">
+            <h3>การพัฒนาโมเดล Heart Disease Prediction</h3>
+            <ol>
+                <li><strong>การเตรียมข้อมูล:</strong>
+                    <ul>
+                        <li>แหล่งข้อมูล: ใช้ชุดข้อมูลเช่น UCI Heart Disease Dataset ซึ่งประกอบด้วยข้อมูลผู้ป่วยและคุณลักษณะต่างๆ เช่น อายุ, เพศ, ความดันโลหิต, คอเลสเตอรอล, อาการเจ็บหน้าอก, เป็นต้น.</li>
+                        <li>การทำ Data Cleaning:
+                            <ul>
+                                <li>จัดการกับ missing values โดยการลบหรือเติมค่า</li>
+                                <li>categorical data เช่น เพศ หรืออาการเจ็บหน้าอก ให้เป็นตัวเลข</li>
+                                <li>ปรับขนาดข้อมูล (feature scaling) เช่น การ normalize หรือ standardize เพื่อให้ข้อมูลมีช่วงค่าใกล้เคียงกัน.</li>
+                            </ul>
+                        </li>
+                        <li>การแบ่งข้อมูล: แบ่งข้อมูลเป็น training set และ test set</li>
+                    </ul>
+                </li>
+                <li><strong>การเลือกอัลกอริทึมและทฤษฎี:</strong>
+                    <ul>
+                        <li>อัลกอริทึมที่ใช้:
+                            <ul>
+                                <li>Logistic Regression: สำหรับการจำแนกประเภทไบนารี (binary classification)</li>
+                                <li>Random Forest: ใช้หลาย Decision Tree เพื่อลดความเอนเอียงและเพิ่มความแม่นยำ</li>
+                                <li>XGBoost: อัลกอริทึม boosting ที่ใช้สร้างโมเดลโดยการรวมผลลัพธ์จากหลายโมเดล</li>
+                            </ul>
+                        </li>
+                        <li>ทฤษฎี:
+                            <ul>
+                                <li>Decision Tree: แบ่งข้อมูลเป็นส่วนๆ ตามคุณลักษณะของข้อมูล</li>
+                                <li>Ensemble Learning: รวมผลลัพธ์จากหลายโมเดลเพื่อเพิ่มความแม่นยำ</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>ขั้นตอนการพัฒนาโมเดล:</strong>
+                    <ul>
+                        <li>โหลดข้อมูล: ฐานข้อมูล</li>
+                        <li>เตรียมข้อมูล: Data Cleaning และแปลงข้อมูลให้พร้อมสำหรับการฝึกโมเดล</li>
+                        <li>แบ่งข้อมูล: แบ่งข้อมูลเป็น training set และ test set</li>
+                        <li>ฝึกโมเดล: ใช้ชุดฝึกอบรมเพื่อฝึกโมเดลด้วยอัลกอริทึมที่เลือก</li>
+                        <li>ประเมินโมเดล: ใช้ชุดทดสอบเพื่อวัดความแม่นยำของโมเดล</li>
+                        <li>ปรับปรุงโมเดล: ปรับพารามิเตอร์ของโมเดลเพื่อเพิ่มประสิทธิภาพ</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        <a href="/demo_heart" class="btn btn-heart">Heart Disease Demo</a>
+    </div>
+
+    <!-- Fraud Detection Section -->
+    <div class="section">
+        <h2>Fraud Detection</h2>
+        <div class="steps">
+            <h3>การพัฒนาโมเดล Fraud Detection</h3>
+            <ol>
+                <li><strong>การเตรียมข้อมูล:</strong>
+                    <ul>
+                        <li>แหล่งข้อมูล: ใช้ชุดข้อมูลเช่น Credit Card Fraud Detection Dataset ซึ่งประกอบด้วยข้อมูลการทำธุรกรรมและคุณลักษณะต่างๆ เช่น จำนวนเงิน, เวลา, และคุณลักษณะที่ถูกแปลงแล้ว (V1-V28).</li>
+                        <li>Data Cleaning:
+                            <ul>
+                                <li>จัดการกับ missing values โดยการลบหรือเติมค่า.</li>
+                                <li>ปรับขนาดข้อมูล (feature scaling) เช่น การ normalize เพื่อให้ข้อมูลมีช่วงค่าใกล้เคียงกัน.</li>
+                            </ul>
+                        </li>
+                        <li>การแบ่งข้อมูล: แบ่งข้อมูลเป็น training set และ test set</li>
+                    </ul>
+                </li>
+                <li><strong>การเลือกอัลกอริทึมและทฤษฎี:</strong>
+                    <ul>
+                        <li>อัลกอริทึมที่ใช้:
+                            <ul>
+                                <li>XGBoost: อัลกอริทึม boosting ที่ใช้สร้างโมเดลที่แข็งแกร่งโดยการรวมผลลัพธ์จากหลายโมเดล.</li>
+                            </ul>
+                        </li>
+                        <li>ทฤษฎี:
+                            <ul>
+                                <li>Decision Tree: แบ่งข้อมูลเป็นส่วนๆ ตามคุณลักษณะของข้อมูล.</li>
+                                <li>Ensemble Learning: รวมผลลัพธ์จากหลายโมเดลเพื่อเพิ่มความแม่นยำ.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>ขั้นตอนการพัฒนาโมเดล:</strong>
+                    <ul>
+                        <li>โหลดข้อมูล: อ่านข้อมูลจากไฟล์ CSV</li>
+                        <li>เตรียมข้อมูล: ทำความสะอาดและแปลงข้อมูลให้พร้อมสำหรับการฝึกโมเดล</li>
+                        <li>แบ่งข้อมูล: แบ่งข้อมูลเป็น training set และ test set</li>
+                        <li>ฝึกโมเดล: ใช้ training set เพื่อฝึกโมเดลด้วยอัลกอริทึมที่เลือก</li>
+                        <li>ประเมินโมเดล: ใช้ test set เพื่อวัดความแม่นยำของโมเดล</li>
+                        <li>ปรับปรุงโมเดล: ปรับพารามิเตอร์ของโมเดลเพื่อเพิ่มประสิทธิภาพ</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        <a href="/demo_fraud" class="btn btn-fraud">Fraud Detection Demo</a>
+    </div>
+
+    <!-- References Section -->
+    <div class="references">
+        <h2>References</h2>
+        <ul>
+            <li><strong>Heart Disease Dataset:</strong> 
+                <a href="https://archive.ics.uci.edu/dataset/45/heart+disease" target="_blank">UCI Machine Learning Repository - Heart Disease Dataset</a>
+            </li>
+            <li><strong>Fraud Detection Dataset:</strong> 
+                <a href="https://www.kaggle.com/datasets/ranjitmandal/fraud-detection-dataset-csv" target="_blank">Kaggle - Fraud Detection Dataset</a>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
